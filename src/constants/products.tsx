@@ -1,10 +1,9 @@
-
-import codeconvertor from "public/images/codeconvertir.png";
-import codeconvertor2 from "public/images/codeconvertor2.png";
-import presente1 from "public/images/presente1.png";
-import presente2 from "public/images/presente2.png";
-import riosgenuzio1 from "public/images/riosgenuzio1.png";
-import riosgenuzio2 from "public/images/riosgenuzio2.png";
+import codeconvertor from "/public/images/codeconvertir.png";
+import codeconvertor2 from "/public/images/codeconvertor2.png";
+import presente1 from "/public/images/presente1.png";
+import presente2 from "/public/images/presente2.png";
+import riosgenuzio1 from "/public/images/riosgenuzio1.png";
+import riosgenuzio2 from "/public/images/riosgenuzio2.png";
 
 export const products = [
   {

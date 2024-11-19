@@ -11,7 +11,7 @@ export async function generateMetadata({
                                        }: {
     params: Promise<{ slug: string }>; // Handle params as a Promise
 }): Promise<Metadata> {
-    const { slug } = await params; // Await params to resolve
+    const { slug } = (await params) as { slug: string }; // Await and cast params
     const product = products.find((p) => p.slug === slug) as Product | undefined;
 
     if (product) {
@@ -33,7 +33,7 @@ export default async function SingleProjectPage({
                                                 }: {
     params: Promise<{ slug: string }>; // Handle params as a Promise
 }) {
-    const { slug } = await params; // Await params to resolve
+    const { slug } = (await params) as { slug: string }; // Await and cast params
     const product = products.find((p) => p.slug === slug);
 
     // Redirect if no product is found

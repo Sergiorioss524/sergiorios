@@ -9,9 +9,9 @@ import { Product } from "@/types/products";
 export async function generateMetadata({
                                            params,
                                        }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>; // Handle params as a Promise
 }): Promise<Metadata> {
-    const slug = params.slug;
+    const { slug } = await params; // Await params to resolve
     const product = products.find((p) => p.slug === slug) as Product | undefined;
 
     if (product) {
@@ -31,9 +31,9 @@ export async function generateMetadata({
 export default async function SingleProjectPage({
                                                     params,
                                                 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>; // Handle params as a Promise
 }) {
-    const slug = params.slug;
+    const { slug } = await params; // Await params to resolve
     const product = products.find((p) => p.slug === slug);
 
     // Redirect if no product is found

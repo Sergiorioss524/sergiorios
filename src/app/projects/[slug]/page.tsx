@@ -10,8 +10,12 @@ interface Props {
   params: { slug: string };
 }
 
+interface Params {
+    slug: string;
+}
+
 // Correctly typed generateMetadata function
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const slug = params.slug;
   const product = products.find((p) => p.slug === slug) as Product | undefined;
 
@@ -20,21 +24,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: product.title,
       description: product.description,
     };
-  } else {
-    return {
-      title: "Projects | Sergio Rios",
-      description:
-          "Sergio Rios is a developer, math enthusiast. He is a digital nomad and travels around the world while working remotely.",
-    };
   }
+
+  return {
+    title: "Projects | Sergio Rios",
+    description: "Sergio Rios is a developer, math enthusiast, and digital nomad.",
+  };
 }
 
 // SingleProjectPage function
-export default function SingleProjectPage({ params }: Props) {
-  const { slug } = params; // Deconstruct slug from params
+export default function SingleProjectPage({ params }: { params: Params }) {
+  const { slug } = params; // Extract slug
   const product = products.find((p) => p.slug === slug);
 
-  // Redirect if product is not found
+  // Redirect if no product is found
   if (!product) {
     redirect("/projects");
   }

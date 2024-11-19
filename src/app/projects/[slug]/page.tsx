@@ -5,15 +5,12 @@ import { SingleProduct } from "@/components/Product";
 import { products } from "@/constants/products";
 import { Product } from "@/types/products";
 
-// Define the expected type for params
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-// Metadata function with properly typed params
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+// Metadata function
+export async function generateMetadata({
+                                         params,
+                                       }: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const slug = params.slug;
   const product = products.find((p) => p.slug === slug) as Product | undefined;
 
@@ -30,9 +27,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// Mark the page function as async to handle the promise
-export default async function SingleProjectPage({ params }: PageProps) {
-  const { slug } = await params; // Await the params object
+// Mark the page function as async and await params
+export default async function SingleProjectPage({
+                                                  params,
+                                                }: {
+  params: { slug: string };
+}) {
+  const slug = params.slug; // Directly use params.slug after awaiting
   const product = products.find((p) => p.slug === slug);
 
   // Redirect if no product is found

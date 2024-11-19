@@ -7,6 +7,7 @@ import { Product } from "@/types/products";
 
 // Metadata function for dynamic routes
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    console.log("Params:", params);
     const slug = params.slug; // Use params.slug directly
     const product = products.find((p) => p.slug === slug) as Product | undefined;
 

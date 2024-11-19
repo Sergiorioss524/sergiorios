@@ -5,10 +5,14 @@ import { SingleProduct } from "@/components/Product";
 import { products } from "@/constants/products";
 import { Product } from "@/types/products";
 
-// Metadata function for dynamic routes
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    console.log("Params:", params);
-    const slug = params.slug; // Use params.slug directly
+// Metadata function with proper async handling
+export async function generateMetadata({
+                                           params,
+                                       }: {
+    params: Promise<{ slug: string }>; // Handle params as a Promise
+}): Promise<Metadata> {
+    const resolvedParams = await params; // Await the Promise
+    const slug = resolvedParams.slug; // Extract slug after resolving
     const product = products.find((p) => p.slug === slug) as Product | undefined;
 
     if (product) {
@@ -24,9 +28,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-// Async page function
-export default async function SingleProjectPage({ params }: { params: { slug: string } }) {
-    const slug = params.slug; // Destructure slug
+// Page function with proper async handling
+export default async function SingleProjectPage({
+                                                    params,
+                                                }: {
+    params: Promise<{ slug: string }>; // Handle params as a Promise
+}) {
+    const resolvedParams = await params; // Await the Promise
+    const slug = resolvedParams.slug; // Extract slug after resolving
     const product = products.find((p) => p.slug === slug);
 
     // Redirect if no product is found

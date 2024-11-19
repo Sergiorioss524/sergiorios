@@ -5,7 +5,8 @@ import { SingleProduct } from "@/components/Product";
 import { products } from "@/constants/products";
 import { Product } from "@/types/products";
 
-// Metadata function
+// Metadata f
+// unction
 export async function generateMetadata({
                                            params,
                                        }: {

@@ -16,7 +16,7 @@ importers:
         version: 2.3.0(webpack@5.96.1)
       '@next/mdx':
         specifier: ^13.4.19
-        version: 13.5.7(@mdx-js/loader@2.3.0(webpack@5.96.1))
+        version: 13.5.7(@mdx-js/loader@2.3.0(webpack@5.96.1))(@mdx-js/react@3.1.0(@types/react@18.3.12)(react@18.3.1))
       '@tabler/icons-react':
         specifier: ^2.32.0
         version: 2.47.0(react@18.3.1)
@@ -80,6 +80,13 @@ importers:
       typescript:
         specifier: 5.6.3
         version: 5.6.3
+    devDependencies:
+      '@mdx-js/react':
+        specifier: ^3.1.0
+        version: 3.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@types/mdx':
+        specifier: ^2.0.13
+        version: 2.0.13
 
 packages:
 
@@ -268,6 +275,12 @@ packages:
 
   '@mdx-js/mdx@2.3.0':
     resolution: {integrity: sha512-jLuwRlz8DQfQNiUCJR50Y09CGPq3fLtmtUQfVrj79E0JWu3dvsVcxVIcfhR5h0iXu+/z++zDrYeiJqifRynJkA==}
+
+  '@mdx-js/react@3.1.0':
+    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
+    peerDependencies:
+      '@types/react': '>=16'
+      react: '>=16'
 
   '@next/env@15.0.3':
     resolution: {integrity: sha512-t9Xy32pjNOvVn2AS+Utt6VmyrshbpfUMhIjFO60gI58deSo/KgLOp31XZ4O+kY/Is8WAGYwA5gR7kOb1eORDBA==}
@@ -3469,17 +3482,24 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@mdx-js/react@3.1.0(@types/react@18.3.12)(react@18.3.1)':
+    dependencies:
+      '@types/mdx': 2.0.13
+      '@types/react': 18.3.12
+      react: 18.3.1
+
   '@next/env@15.0.3': {}
 
   '@next/eslint-plugin-next@13.4.19':
     dependencies:
       glob: 7.1.7
 
-  '@next/mdx@13.5.7(@mdx-js/loader@2.3.0(webpack@5.96.1))':
+  '@next/mdx@13.5.7(@mdx-js/loader@2.3.0(webpack@5.96.1))(@mdx-js/react@3.1.0(@types/react@18.3.12)(react@18.3.1))':
     dependencies:
       source-map: 0.7.4
     optionalDependencies:
       '@mdx-js/loader': 2.3.0(webpack@5.96.1)
+      '@mdx-js/react': 3.1.0(@types/react@18.3.12)(react@18.3.1)
 
   '@next/swc-darwin-arm64@15.0.3':
     optional: true

@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const slug = params.slug;
   const product = products.find((p) => p.slug === slug) as Product | undefined;
 
+
   if (product) {
     return {
       title: product.title,

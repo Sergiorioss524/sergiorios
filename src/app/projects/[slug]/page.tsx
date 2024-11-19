@@ -5,14 +5,13 @@ import { SingleProduct } from "@/components/Product";
 import { products } from "@/constants/products";
 import { Product } from "@/types/products";
 
-// Metadata function with proper async handling
+// Metadata function
 export async function generateMetadata({
                                            params,
                                        }: {
-    params: Promise<{ slug: string }>; // Handle params as a Promise
+    params: { slug: string };
 }): Promise<Metadata> {
-    const resolvedParams = await params; // Await the Promise
-    const slug = resolvedParams.slug; // Extract slug after resolving
+    const slug = params.slug;
     const product = products.find((p) => p.slug === slug) as Product | undefined;
 
     if (product) {
@@ -28,14 +27,13 @@ export async function generateMetadata({
     };
 }
 
-// Page function with proper async handling
+// Page function
 export default async function SingleProjectPage({
                                                     params,
                                                 }: {
-    params: Promise<{ slug: string }>; // Handle params as a Promise
+    params: { slug: string };
 }) {
-    const resolvedParams = await params; // Await the Promise
-    const slug = resolvedParams.slug; // Extract slug after resolving
+    const slug = params.slug;
     const product = products.find((p) => p.slug === slug);
 
     // Redirect if no product is found

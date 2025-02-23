@@ -1,7 +1,8 @@
 import {
   IconBrandLinkedin,
   IconBrandTwitter,
-  IconBrandGithub
+  IconBrandGithub,
+  IconMoneybag
 } from "@tabler/icons-react";
 
 export const socials = [
@@ -20,4 +21,10 @@ export const socials = [
     label: "Github",
     icon: IconBrandGithub,
   },
+  {
+    href: "https://buymeacoffee.com/sergiorioss",
+    label: "Buymeacoffee",
+    icon: IconMoneybag,
+  }
+  
 ];
